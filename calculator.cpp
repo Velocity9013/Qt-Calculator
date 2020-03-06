@@ -37,11 +37,17 @@ Calculator::~Calculator()
 
 void Calculator::numpressed(){
     QPushButton* button = qobject_cast<QPushButton*>(sender());
+    QString stringnumber;
+    double doublenumber;
 
-    number.append(button->text());
-    ui->label->setText(number);
+    if(ui->pushButton_add->isChecked() || ui->pushButton_subtract->isChecked() || ui->pushButton_times->isChecked() || ui->pushButton_divide->isChecked()){
+        doublenumber = button->text().toDouble();
+    }else{
+        doublenumber = (ui->label->text() + button->text()).toDouble();
+    }
+    stringnumber = QString::number(doublenumber);
+    ui->label->setText(stringnumber);
 }
-
 
 void Calculator::on_pushButton_clear_released()
 {
@@ -85,13 +91,13 @@ void Calculator::operator_pressed()
     if(button->text() == "+"){
         ui->pushButton_add->setChecked(true);
     }
-    if(button->text() == "-"){
+    else if(button->text() == "-"){
         ui->pushButton_subtract->setChecked(true);
     }
-    if(button->text() == "X"){
+    else if(button->text() == "X"){
         ui->pushButton_times->setChecked(true);
     }
-    if(button->text() == "/"){
+    else if(button->text() == "/"){
         ui->pushButton_divide->setChecked(true);
     }
 }
