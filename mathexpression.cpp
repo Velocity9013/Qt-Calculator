@@ -40,8 +40,10 @@ void MathExpression::inputOperator(QChar c)
 
 void MathExpression::inputDot()
 {
-    if(back() != '.'){
-        append('.');
+    if(split(' ').last().contains('.')){
+        return;
+    }else{
+        append(".");
     }
 }
 
@@ -67,4 +69,26 @@ double MathExpression::evaluate()
     }
 
     return result;
+}
+
+void MathExpression::del()
+{
+    chop(1);
+    if(!isEmpty()){
+        if(back() == ' '){
+            chop(1);
+        }
+    }
+}
+
+void MathExpression::plusminus()
+{
+    if(!isEmpty()){
+        if(back().isDigit()){
+            double result = split(' ').last().toDouble();
+            chop(split(' ').last().length());
+            result *= -1;
+            append(QString::number(result));
+        }
+    }
 }

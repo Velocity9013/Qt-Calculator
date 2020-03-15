@@ -1,6 +1,7 @@
 #include "calculator.h"
 #include "ui_calculator.h"
 
+#include <QString>
 #include <QDebug>
 
 
@@ -27,7 +28,9 @@ Calculator::Calculator(QWidget *parent)
 
     connect(ui->pushButton_equal, SIGNAL(clicked()),this, SLOT(buttonClicked()));
     connect(ui->pushButton_clear, SIGNAL(clicked()),this, SLOT(buttonClicked()));
+    connect(ui->pushButton_delete, SIGNAL(clicked()),this, SLOT(buttonClicked()));
     connect(ui->pushButton_decimal, SIGNAL(clicked()),this, SLOT(buttonClicked()));
+    connect(ui->pushButton_plusminus, SIGNAL(clicked()),this, SLOT(buttonClicked()));
 }
 
 Calculator::~Calculator()
@@ -71,14 +74,18 @@ void Calculator::buttonClicked()
         expression.clear();
     if (senderButton == ui->pushButton_decimal)
         expression.inputDot();
+    if (senderButton == ui->pushButton_delete)
+        expression.del();
+    if (senderButton == ui->pushButton_plusminus)
+        expression.plusminus();
 
-    ui->label->setText(expression);
+    ui->textDisplay->setText(expression);
 
     if(senderButton == ui->pushButton_equal){
         double ans = expression.evaluate();
 
+        ui->textDisplay->setText("<p>" + expression + "</p>" + "<h1>" + QString::number(ans) + "</h1>");
         expression.clear();
-        ui->label->setText(QString::number(ans));
     }
 }
 

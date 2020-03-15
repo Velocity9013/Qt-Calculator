@@ -11,6 +11,8 @@ public:
     void inputOperator(QChar c);
     void inputDot();
     double evaluate();
+    void del();
+    void plusminus();
 };
 
 #endif // MATHEXPRESSION_H
