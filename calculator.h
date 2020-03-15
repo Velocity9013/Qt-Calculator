@@ -1,6 +1,7 @@
 #ifndef CALCULATOR_H
 #define CALCULATOR_H
 
+#include "mathexpression.h"
 #include <QMainWindow>
 
 QT_BEGIN_NAMESPACE
@@ -14,20 +15,13 @@ class Calculator : public QMainWindow
 public:
     Calculator(QWidget *parent = nullptr);
     ~Calculator();
-    enum Operation{add, subtract, empty};
 
 private:
     Ui::Calculator *ui;
-    QString number;
-    Operation operation;
-    double total;
-    double buffernum;
-    double currentval;
+    MathExpression expression;
 
 private slots:
-    void numpressed();
-    void on_pushButton_clear_released();
-    void on_pushButton_equal_released();
-    void operator_pressed();
+    void buttonClicked();
+
 };
 #endif // CALCULATOR_H

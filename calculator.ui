@@ -52,7 +52,7 @@
     <item row="1" column="1">
      <widget class="QPushButton" name="pushButton_plusminus">
       <property name="text">
-       <string>+-</string>
+       <string>ANS</string>
       </property>
      </widget>
     </item>
@@ -122,7 +122,7 @@
     <item row="2" column="4">
      <widget class="QPushButton" name="pushButton_times">
       <property name="text">
-       <string>X</string>
+       <string>*</string>
       </property>
      </widget>
     </item>
@@ -150,14 +150,14 @@
     <item row="1" column="4">
      <widget class="QPushButton" name="pushButton_divide">
       <property name="text">
-       <string>/</string>
+       <string>÷</string>
       </property>
      </widget>
     </item>
     <item row="1" column="2">
-     <widget class="QPushButton" name="pushButton_percent">
+     <widget class="QPushButton" name="pushButton_delete">
       <property name="text">
-       <string>%</string>
+       <string>DEL</string>
       </property>
      </widget>
     </item>
